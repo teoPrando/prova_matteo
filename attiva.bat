@@ -1,0 +1,1 @@
+C:\Users\prand\Documents\Django\env\Scripts\activate
