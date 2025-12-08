@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+{%block title%} {{block.super}} | Lista meccanici {%endblock title%}
+
+{%block content%}
+   <!--Scrittura di tutti i meccanici-->
+   <h1>Lista meccanici</h1>
+   <ul>
+      {%for m in meccanici%}
+         <li>{{m}}</li>
+      {%endfor%}
+   </ul>
+{%endblock content%}

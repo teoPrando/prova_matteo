@@ -1,0 +1,127 @@
+{% load static %}
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Prova {% endblock %}</title>
+  <meta name="description" content="Base template dark per Django">
+  <style>
+    :root{
+--bg:#0b0f14; /* sfondo principale */
+--panel:#0f1720; /* pannelli */
+--muted:#9aa6b2; /* testo secondario */
+--text:#e6eef3; /* testo principale */
+--accent:#6ee7b7; /* accento */
+--glass: rgba(255,255,255,0.03);
+--radius:12px;
+}
+
+
+/* Reset minimale */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+background: linear-gradient(180deg,var(--bg), #071018);
+color:var(--text);
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+line-height:1.45;
+}
+
+
+/* Layout */
+.wrapper{min-height:100vh;display:flex;flex-direction:column}
+header{background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:1rem}
+
+
+/* Navbar */
+.nav{
+display:flex;align-items:center;justify-content:space-between;gap:1rem
+}
+.brand{display:flex;align-items:center;gap:.75rem;font-weight:600}
+.logo{
+width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3bd3c6);display:inline-flex;align-items:center;justify-content:center;color:#042024;font-weight:700;font-size:1rem
+}
+nav ul{display:flex;gap:.5rem;list-style:none}
+nav a{color:var(--muted);text-decoration:none;padding:.5rem .75rem;border-radius:8px}
+nav a:hover{color:var(--text);background:var(--glass)}
+
+
+/* Hero/main */
+main{flex:1;padding:2rem 0}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:1.25rem;border-radius:var(--radius)}
+
+
+/* Footer */
+footer{padding:1rem 0;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+
+/* Utilities */
+.row{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:900px){.row{grid-template-columns:2fr 1fr}}
+
+
+.btn{display:inline-block;padding:.5rem .9rem;border-radius:10px;background:linear-gradient(90deg,var(--accent),#39d0b9);color:#042024;font-weight:600;text-decoration:none}
+
+
+/* small screens: hamburger */
+.hamburger{display:none;border:1px solid rgba(255,255,255,0.03);padding:.35rem;border-radius:8px;background:transparent}
+@media(max-width:800px){nav ul{display:none}.hamburger{display:inline-flex}}
+
+
+/* small helper */
+.muted{color:var(--muted);font-size:.95rem}
+.title{font-size:1.35rem;font-weight:700}
+.titolo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #87a4c1;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    font-family: "Poppins", sans-serif;
+    display: inline-block;
+}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div>
+            <div class="titolo">Officina</div>
+          </div>
+        </div>
+
+        <nav>
+          <button class="hamburger" aria-label="menu" id="menuBtn">☰</button>
+          <ul id="navList">
+            <li><a href="{% url 'prima_app:homepage' %}">Home</a></li>
+            <li><a href="{% url 'prima_app:lista_meccanici' %}">Lista meccanici</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <section>
+          <div class="card">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </section>
+      </div>
+    </div>
+    
+
+    
+  </div>
+
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
