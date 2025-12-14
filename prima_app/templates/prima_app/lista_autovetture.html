@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{%block title%} {{block.super}} | Autovetture {%endblock title%}
+
+{%block content%}
+   <!--Scrittura di tutte le macchine-->
+    {% if macchine %}  <!--Controlla che la lista macchine non sia vuota-->
+        <h1>Lista macchine</h1>
+        <ul class="data-list">
+            {% for a in macchine %}
+                <li>{{ a }}</li>
+            {% endfor %}
+        </ul>
+    {% else %} <!--Se la lista macchine è vuota-->
+        <p class="muted">Nessun autovettura registrata!</p>
+    {% endif %}
+    <br>
+    <hr>
+    <br>
+    <!--Form per l'inserimento delle macchine-->
+    <h2>Aggiungi un nuova autovettura</h2>
+
+    <form method="post"> <!--Quando viene cliccato il bottone salva, viene inviata una richiesta di tipo post (request.method="POST")-->
+        {% csrf_token %} <!--OBBLIGATORIO-->
+        
+        <p>
+            {{ form.targa.label_tag }}<br> <!--Genera l'etichetta Targa: -->
+            {{ form.targa }} <!--Viene generato l'HTML <input type="text"> con le validazioni-->
+        </p>
+
+        <p>
+            {{ form.marca.label_tag }}<br>
+            {{ form.marca }}
+        </p>
+         <p>
+            {{ form.modello.label_tag }}<br>
+            {{ form.modello }}
+        </p>
+        <br>
+        <button type="submit" class="btn">Salva</button> <!--Type submit dice al browser di inviare il form-->
+        {% if errori %}
+            <h4 style="color:red">Dati non validi!</h4>
+        {% endif %}
+    </form>
+    
+{%endblock content%}

@@ -3,4 +3,8 @@
 
 {%block content%}
    <h1>Homepage</h1>
+   <ol class="home-index">
+        <li><a href="{% url 'prima_app:meccanici'%}">Meccanici</a></li>
+        <li><a href="{% url 'prima_app:autovetture'%}">Maccchine</a></li>
+    </ol>
 {%endblock content%}

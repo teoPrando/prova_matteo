@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import homepage,lista_meccanici
+from .views import homepage,meccanici,autovetture
 
 app_name="prima_app"
 
 urlpatterns=[
     path('',homepage,name='homepage'),
-    path('lista_meccanici',lista_meccanici,name='lista_meccanici')
+    path('meccanici',meccanici,name='meccanici'),
+    path('autovetture',autovetture,name='autovetture')
 ]

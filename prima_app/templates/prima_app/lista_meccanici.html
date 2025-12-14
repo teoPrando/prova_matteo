@@ -3,12 +3,16 @@
 
 {%block content%}
    <!--Scrittura di tutti i meccanici-->
-   <h1>Lista meccanici</h1>
-   <ul>
-      {%for m in meccanici%}
-         <li>{{m}}</li>
-      {%endfor%}
-   </ul>
+   {% if meccanici %}  <!--Controlla che la lista meccanici non sia vuota-->
+      <h1>Lista meccanici</h1>
+      <ul class="data-list">
+         {%for m in meccanici%}
+            <li>{{m}}</li>
+         {%endfor%}
+      </ul>
+   {% else %} <!--Se la lista meccanici è vuota-->
+        <p class="muted">Nessun meccanico registrato!</p>
+    {% endif %}
    <br>
    <hr>
    <br>
@@ -29,5 +33,8 @@
       </p>
       <br>
       <button type="submit" class="btn">Salva</button> <!--Type submit dice al browser di inviare il form-->
+      {% if errori %}
+            <h4 style="color:red">Dati non validi!</h4>
+      {% endif %}
    </form>
 {%endblock content%}

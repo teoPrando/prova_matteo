@@ -85,6 +85,97 @@ footer{padding:1rem 0;border-top:1px solid rgba(255,255,255,0.03);color:var(--mu
     font-family: "Poppins", sans-serif;
     display: inline-block;
 }
+.home-index {
+    list-style: none;
+    counter-reset: index;
+    display: grid;
+    gap: 1rem;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.home-index li {
+    counter-increment: index;
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+    );
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    position: relative;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.home-index li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.home-index li::before {
+    content: counter(index);
+    position: absolute;
+    top: 50%;
+    left: 1.2rem;
+    transform: translateY(-50%);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.85;
+}
+
+.home-index a {
+    display: block;
+    padding: 1.2rem 1.2rem 1.2rem 4.2rem;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.index-title {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.index-desc {
+    display: block;
+    font-size: .9rem;
+    color: var(--muted);
+    margin-top: .25rem;
+}
+.data-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.data-list li {
+    padding: .7rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.01);
+    transition: background .15s ease;
+}
+
+.data-list li:last-child {
+    border-bottom: none;
+}
+
+.data-list li:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.data-list a {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.data-list a:hover {
+    color: var(--accent);
+}
   </style>
 </head>
 <body>
@@ -101,7 +192,8 @@ footer{padding:1rem 0;border-top:1px solid rgba(255,255,255,0.03);color:var(--mu
           <button class="hamburger" aria-label="menu" id="menuBtn">☰</button>
           <ul id="navList">
             <li><a href="{% url 'prima_app:homepage' %}">Home</a></li>
-            <li><a href="{% url 'prima_app:lista_meccanici' %}">Lista meccanici</a></li>
+            <li><a href="{% url 'prima_app:meccanici' %}">Meccanici</a></li>
+            <li><a href="{% url 'prima_app:autovetture' %}">Macchine</a></li>
           </ul>
         </nav>
       </div>
