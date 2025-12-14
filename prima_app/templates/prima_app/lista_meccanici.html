@@ -9,4 +9,26 @@
          <li>{{m}}</li>
       {%endfor%}
    </ul>
+   <br>
+   <hr>
+   <br>
+
+   <!--Form per l'inserimento dei meccanici-->
+   <h2>Aggiungi un nuovo meccanico</h2>
+
+   <form method="post"> <!--Quando viene cliccato il bottone salva, viene inviata una richiesta di tipo post (request.method="POST")-->
+      {% csrf_token %} <!--OBBLIGATORIO-->
+      
+      <p>
+         {{ form.nome.label_tag }}<br> <!--Genera l'etichetta Nome: -->
+         {{ form.nome }} <!--Viene generato l'HTML <input type="text"> con le validazioni-->
+      </p>
+
+      <p>
+         {{ form.cognome.label_tag }}<br>
+         {{ form.cognome }}
+      </p>
+      <br>
+      <button type="submit" class="btn">Salva</button> <!--Type submit dice al browser di inviare il form-->
+   </form>
 {%endblock content%}
